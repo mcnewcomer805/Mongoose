@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 var databaseUri ='mongodb://localhost/mongoose';
   if (process.env.MONGODB_URI) {
-    monoose.connect(process.env.MONGODB_URI);
+    mongoose.connect(process.env.MONGODB_URI);
   } else {
     mongoose.connect(databaseUri);
   }
