@@ -23,6 +23,15 @@ var databaseUri ='mongodb://localhost/mongoose';
   } else {
     mongoose.connect(databaseUri);
   }
+
+var ab = mongoose.connection;
+ab.on('error', function(err){
+  console.log('mongoose error: ', err);
+});
+
+ab.once('open', function(){
+  console.log('mongoose success');
+});
 //mongoose.connect("mongodb://localhost/week18Populater");
 app.get("/scrape", function(req, res) {
   axios.get("https://www.washingtonpost.com").then(function(response) {
