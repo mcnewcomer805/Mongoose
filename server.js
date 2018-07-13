@@ -7,9 +7,7 @@ var request = require("request");
 var mongojs = require("mongojs");
 var app = express();
 var PORT = process.env.PORT || 3000;
-var databaseUrl = "zoo";
-var collections = ["animals"];
-var db = mongojs(databaseUrl, collections);
+//var db = mongojs(databaseUrl, collections);
 var logger = require("morgan");
 var axios = require("axios");
 var db = require("./models");
@@ -17,7 +15,7 @@ var db = require("./models");
 
 
 app.use(logger("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 var databaseUri ='mongodb://localhost/mongoose';
   if (process.env.MONGODB_URI) {
