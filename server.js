@@ -14,17 +14,18 @@ var logger = require("morgan");
 var axios = require("axios");
 var db = require("./models");
 
+
+
+app.use(logger("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static("public"));
 var databaseUri ='mongodb://localhost/mongoose';
   if (process.env.MONGODB_URI) {
     monoose.connect(process.env.MONGODB_URI);
   } else {
     mongoose.connect(databaseUri);
   }
-
-app.use(logger("dev"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
-mongoose.connect("mongodb://localhost/week18Populater");
+//mongoose.connect("mongodb://localhost/week18Populater");
 app.get("/scrape", function(req, res) {
   axios.get("https://www.washingtonpost.com").then(function(response) {
     var $ = cheerio.load(response.data);
