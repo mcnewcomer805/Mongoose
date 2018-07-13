@@ -14,7 +14,7 @@ var logger = require("morgan");
 var axios = require("axios");
 var db = require("./models");
 
-var databaseUri ='mongodb://localhost/week18daymongoose';
+var databaseUri ='mongodb://localhost/mongoose';
   if (process.env.MONGODB_URI) {
     monoose.connect(process.env.MONGODB_URI);
   } else {
